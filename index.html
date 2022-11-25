@@ -19,36 +19,38 @@
                 if (choices.includes(playerSelection)) {
                     if (playerSelection === "rock") {
                         if (computerSelection === "rock") {
-                            console.log("It's a tie!");
+                            return "It's a tie!";
                         } else if (computerSelection === "paper") {
-                            console.log("Player loses!");
+                            return "Player loses!";
                         } else {
-                            console.log("Player wins!");
+                            return "Player wins!";
                         }
                     } else if (playerSelection === "paper") {
                         if (computerSelection === "rock") {
-                            console.log("Player wins!");
+                            return "Player wins!";
                         } else if (computerSelection === "paper") {
-                            console.log("It's a tie!");
+                            return "It's a tie!";
                         } else {
-                            console.log("Player loses!");
+                            return "Player loses!";
                         }
                     } else {
                         if (computerSelection === "rock") {
-                            console.log("Player loses!");
+                            return "Player loses!";
                         } else if (computerSelection === "paper") {
-                            console.log("Player wins!");
+                            return "Player wins!";
                         } else {
-                            console.log("It's a tie!");
+                            return "It's a tie!";
                         }
                     }
+                } else {
+                    return "Invalid choice";
                 }
             }
 
-            const playerSelection = "rock";
+            const playerSelection = "scissors";
             const computerSelection = getComputersChoice();
 
-            playRound(playerSelection, computerSelection);
+            console.log(playRound(playerSelection, computerSelection));
 
 
         </script>
