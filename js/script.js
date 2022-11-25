@@ -37,8 +37,37 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-const playerSelection = "rock";
-const computerSelection = getComputersChoice();
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+    let result;
+    let playerSelection;
+    let correctChoice;
+    const choices = ["rock", "paper", "scissors"];
+    for (let i = 0; i < 5; i++) {
+        do {
+            playerSelection = prompt("Plase choose rock, paper or scissors");
+            if (playerSelection !== null) {
+                playerSelection.toLowerCase();
+            }
+            correctChoice = choices.includes(playerSelection);
+        } while (!correctChoice);
+        result = playRound(playerSelection, getComputersChoice());
+        console.log(result);
+        if (result === "Player wins!") {
+            playerScore++;
+        } else if (result === "Player loses!") {
+            computerScore++;
+        }
+    }
+    console.log(`Player's score is: ${playerScore}\nComputer's score is: ${computerScore}`);
+    if (playerScore > computerScore) {
+        console.log(`Final winner is PLAYER!`);
+    } else if (computerScore > playerScore) {
+        console.log("Final winner is COMPUTER!");
+    } else {
+        console.log("It's a tie!");
+    }
+}
 
-console.log(`Player selected ${playerSelection} and computer selected ${computerSelection}`);
-console.log(playRound(playerSelection, computerSelection));
+game();
