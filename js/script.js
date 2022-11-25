@@ -37,7 +37,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-const playerSelection = "scissors";
+const playerSelection = "rock";
 const computerSelection = getComputersChoice();
 
 console.log(`Player selected ${playerSelection} and computer selected ${computerSelection}`);
