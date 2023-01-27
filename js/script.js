@@ -1,43 +1,61 @@
 function playRound(playerSelection) {
     const choices = ["rock", "paper", "scissors"];
     const computerSelection = choices[Math.floor(Math.random() * 3)];
-    console.log("computer chooses " + computerSelection);
     if (choices.includes(playerSelection)) {
         if (playerSelection === "rock") {
             if (computerSelection === "rock") {
-                console.log( "It's a tie!");
+                return "This round is a tie!";
             } else if (computerSelection === "paper") {
-                console.log( "Player loses!");
+                return "Player loses this round!";
             } else {
-                console.log( "Player wins!");
+                return "Player wins this round!!";
             }
         } else if (playerSelection === "paper") {
             if (computerSelection === "rock") {
-                console.log( "Player wins!");
+                return "Player wins this round!!";
             } else if (computerSelection === "paper") {
-                console.log( "It's a tie!");
+                return "This round is a tie!";
             } else {
-                console.log( "Player loses!");
+                return "Player loses this round!";
             }
         } else {
             if (computerSelection === "rock") {
-                console.log( "Player loses!");
+                return "Player loses this round!";
             } else if (computerSelection === "paper") {
-                console.log( "Player wins!");
+                return "Player wins this round!!";
             } else {
-                console.log("It's a tie!");
+                return "This round is a tie!";
             }
         }
     } else {
-        console.log("Invalid choice");
+        return "Invalid choice";
     }
 }
 
+const results = document.querySelector('#results');
+const score = document.querySelector('#score');
+
+let pscore = 0;
+let cscore = 0;
+
 const buttons = document.querySelectorAll('button');
-console.log(buttons);
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        console.log(button.id);
-        playRound(button.id);
+        results.innerText = playRound(button.id);
+        if (results.innerText === "Player wins this round!!") {
+            pscore += 1;
+        } else if (results.innerText === "Player loses this round!") {
+            cscore +=1;
+        }
+        score.innerText = `Player score is: ${pscore} \nComputer score is: ${cscore}`;
+        if (pscore === 5) {
+            score.innerText = "PLAYER WINS!";
+            pscore = 0;
+            cscore = 0;
+        } else if (cscore === 5) {
+            score.innerText = "COMPUTER WINS!";
+            pscore = 0;
+            cscore = 0;
+        }
     })
 });
